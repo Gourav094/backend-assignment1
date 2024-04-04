@@ -1,15 +1,15 @@
-const express = require('express')
-const { apiRouter } = require('./routes/api.router')
-const connectMongo = require('./mongo')
-const { MONGO_URL } = require('./constant')
-const app = express()
-
+const http = require('http')
+const app = require('./app')
+const server = http.createServer(app)
+const connectMongo = require('./services/mongo')
 const PORT = 3000
 
-connectMongo(MONGO_URL)
+async function connectDB(){
+    await connectMongo()
+}
 
-app.use(apiRouter)
+connectDB()
 
-app.listen(PORT,() => {
-    console.log(`Server running on http://localhost:${PORT}`)  
+server.listen(PORT,() => {
+    console.log(`server running on ${PORT}`)
 })

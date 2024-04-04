@@ -1,6 +1,6 @@
 const axios = require("axios")
-const weatherData = require('../schema')
-const { WEATHER_API_KEY } = require("../constant")
+const weatherData = require('../services/schema')
+const { WEATHER_API_KEY } = require("../utils/constant")
 const { getLocationInfo, getWeatherInfo } = require("../models/api.model")
 
 
